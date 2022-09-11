@@ -118,9 +118,10 @@ const updateTotal = () => {
 document.getElementById("search-btn").addEventListener("click", function () {
   const inputField = document.getElementById("input-value");
   const inputFieldValue = inputField.value;
-  const searchedProduct = arr[0].find((p) =>
-    p.category.includes(`${inputFieldValue}`)
-  );
+  const searchedProduct = arr[0].find((p) => {
+    p.category.includes(`${inputFieldValue}`);
+    console.log(p);
+  });
   inputField.value = "";
   showProducts(searchedProduct);
 });
