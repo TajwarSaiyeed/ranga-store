@@ -13,7 +13,7 @@ loadProducts("https://fakestoreapi.com/products");
 
 // show all product in UI
 const showProducts = (products) => {
-  console.log(products);
+  //   console.log(products);
   setInnerText("total_products", products.length);
 
   document.getElementById("all-products").innerHTML = "";
@@ -99,6 +99,7 @@ const updateTaxAndCharge = () => {
     setInnerText("delivery-charge", 60);
     setInnerText("total-tax", priceConverted * 0.4);
   }
+  updateTotal();
 };
 
 //grandTotal update function
@@ -107,7 +108,7 @@ const updateTotal = () => {
     getInputValue("price") +
     getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal;
+  document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 
 // search by category
