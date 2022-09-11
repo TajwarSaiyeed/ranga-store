@@ -6,7 +6,8 @@ const loadProducts = (url) => {
     .then((data) => {
       arr.push(data);
       showProducts(data);
-    });
+    })
+    .catch((err) => console.log(err));
 };
 
 loadProducts("https://fakestoreapi.com/products");
@@ -58,7 +59,6 @@ const showProductDetails = (product_id) => {
 };
 
 const showProductDetailsInModal = (product_details) => {
-  console.log(product_details);
   setInnerText("exampleModalLabel", product_details.title);
   setInnerText("product_id", product_details.id);
   setInnerText("modal_body", product_details.description);
@@ -81,7 +81,10 @@ const updatePrice = (id, value) => {
 
 // set innerText function
 const setInnerText = (id, value) => {
-  document.getElementById(id).innerText = Math.round(value);
+  if (typeof value === "number") {
+    value = Math.round(value);
+  }
+  document.getElementById(id).innerText = value;
 };
 
 // update delivery charge and total Tax
